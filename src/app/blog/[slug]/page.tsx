@@ -9,9 +9,9 @@ import type { Metadata } from 'next';
 import ShareButton from '@/components/ShareButton';
 
 interface BlogPostPageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 // Generate static paths for all blog posts
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
     params,
 }: BlogPostPageProps): Promise<Metadata> {
-    const post = await getBlogPost(params.slug);
+    const { slug } = await params;
+    const post = await getBlogPost(slug);
 
     if (!post) {
         return {
@@ -46,7 +47,8 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-    const post = await getBlogPost(params.slug);
+    const { slug } = await params;
+    const post = await getBlogPost(slug);
 
     if (!post) {
         notFound();
@@ -112,7 +114,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Post content */}
             <div
-                className="prose prose-lg max-w-none 
+                className='prose prose-lg max-w-none 
                     prose-headings:text-gray-900 dark:prose-headings:text-white
                     prose-p:text-gray-700 dark:prose-p:text-gray-300
                     prose-a:text-amber-600 dark:prose-a:text-amber-400
@@ -122,7 +124,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800
                     prose-pre:text-gray-100 dark:prose-pre:text-gray-200
                     prose-blockquote:border-amber-500
-                    prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400"
+                    prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400'
                 dangerouslySetInnerHTML={{ __html: post.content }}
             />
 

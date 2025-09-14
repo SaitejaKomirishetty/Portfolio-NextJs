@@ -118,7 +118,7 @@ const CustomCursor = () => {
             document.removeEventListener('mouseover', handleMouseOver);
             document.removeEventListener('mouseout', handleMouseOut);
         };
-    }, []);
+    }, [animateCursor, handleMouseMove]);
 
     const cursorStyle: React.CSSProperties = {
         width: '40px',

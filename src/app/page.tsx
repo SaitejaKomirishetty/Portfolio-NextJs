@@ -1,6 +1,5 @@
 'use client';
 import AboutSection from '@/components/AboutSection';
-import CustomCursor from '@/components/CustomCursor';
 import ProfessionalExperience from '@/components/Experience';
 import HeroSection from '@/components/HeroSection';
 import Projects from '@/components/Projects';
@@ -8,7 +7,6 @@ import SkillsSection from '@/components/SkillsSection';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import { IconBrandGithub, IconBrandInstagram } from '@tabler/icons-react';
 import { IconBrandLinkedin, IconBrandX } from '@tabler/icons-react';
-import { useEffect, useState } from 'react';
 
 const links = [
     {
