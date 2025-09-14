@@ -1,7 +1,8 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const CustomCursor = () => {
+    const [isDesktop, setIsDesktop] = useState(false);
     const cursorRef = useRef<HTMLDivElement | null>(null);
     const innerRef = useRef<HTMLDivElement | null>(null);
 
@@ -141,6 +142,28 @@ const CustomCursor = () => {
         pointerEvents: 'none',
         transition: 'width 0.3s ease, height 0.3s ease-out',
     };
+
+    useEffect(() => {
+        const checkDeviceType = () => {
+            const userAgent = navigator.userAgent;
+            const isDesktopDevice = /windows|macintosh/i.test(userAgent);
+            setIsDesktop(isDesktopDevice);
+        };
+        checkDeviceType();
+        const handleResize = () => {
+            checkDeviceType();
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    if (!isDesktop) {
+        return;
+    }
 
     return (
         <div>

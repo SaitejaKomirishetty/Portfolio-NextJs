@@ -3,13 +3,12 @@ import AboutSection from '@/components/AboutSection';
 import CustomCursor from '@/components/CustomCursor';
 import ProfessionalExperience from '@/components/Experience';
 import HeroSection from '@/components/HeroSection';
-import Navbar from '@/components/NavBar';
 import Projects from '@/components/Projects';
 import SkillsSection from '@/components/SkillsSection';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import { IconBrandGithub, IconBrandInstagram } from '@tabler/icons-react';
 import { IconBrandLinkedin, IconBrandX } from '@tabler/icons-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const links = [
     {
@@ -43,56 +42,21 @@ const links = [
 ];
 
 export default function Home() {
-    const aboutRef = useRef<HTMLDivElement>(null!);
-    const skillsRef = useRef<HTMLDivElement>(null!);
-    const experienceRef = useRef<HTMLDivElement>(null!);
-    const projectsRef = useRef<HTMLDivElement>(null!);
-    const contactRef = useRef<HTMLDivElement>(null!);
-
-    const [isDesktop, setIsDesktop] = useState(false);
-
-    useEffect(() => {
-        const checkDeviceType = () => {
-            const userAgent = navigator.userAgent;
-            const isDesktopDevice = /windows|macintosh/i.test(userAgent);
-            setIsDesktop(isDesktopDevice);
-        };
-        checkDeviceType();
-        const handleResize = () => {
-            checkDeviceType();
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     return (
         <div>
-            {isDesktop ? <CustomCursor /> : null}
-            <div className='fixed top-0 bg-opacity-28 backdrop-blur-[7.6px] w-full z-50'>
-                <Navbar
-                    aboutRef={aboutRef}
-                    skillsRef={skillsRef}
-                    experienceRef={experienceRef}
-                    projectsRef={projectsRef}
-                    contactRef={contactRef}
-                />
-            </div>
-            <div className=' p-4 md:p-6 lg:p-8 xl:p-10 2xl:p-12 mx-5 md:mx-10 lg:mx-20 space-y-5  md:space-y-10 lg:space-y-16 xl:space-y-20 2xl:space-y-32'>
+            <div className='pt-20 p-4 md:p-6 lg:p-8 xl:p-10 2xl:p-12 mx-5 md:mx-10 lg:mx-20 space-y-5  md:space-y-10 lg:space-y-16 xl:space-y-20 2xl:space-y-32'>
                 <HeroSection />
                 <div className='w-full  mx-auto px-4 sm:px-6 lg:px-8 space-y-5  md:space-y-10 lg:space-y-16 xl:space-y-20 2xl:space-y-32'>
-                    <section ref={aboutRef} id='about'>
+                    <section id='about'>
                         <AboutSection />
                     </section>
-                    <section ref={skillsRef} id='skills'>
+                    <section id='skills'>
                         <SkillsSection />
                     </section>
-                    <section ref={experienceRef} id='experience'>
+                    <section id='experience'>
                         <ProfessionalExperience />
                     </section>
-                    <section ref={projectsRef} id='projects'>
+                    <section id='projects'>
                         <Projects />
                     </section>
                     <div className=''>

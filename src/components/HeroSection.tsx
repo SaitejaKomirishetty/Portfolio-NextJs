@@ -16,7 +16,7 @@ const HeroSection = () => {
                     <p className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300'>
                         I&apos;m
                     </p>
-                    <h1 className='dark:text-amber-500 font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight'>
+                    <h1 className='text-amber-500 dark:text-amber-400 font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight'>
                         SAITEJA
                     </h1>
                 </div>
