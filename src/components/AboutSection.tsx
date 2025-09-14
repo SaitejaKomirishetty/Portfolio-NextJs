@@ -5,7 +5,7 @@ const AboutSection = () => {
                 About Me
             </h1>
             <div className='flex flex-col lg:flex-row items-start justify-center lg:justify-start gap-4 lg:gap-6'>
-                <div className='hidden lg:block lg:min-w-20 dark:border-amber-500 border-t-4 h-20 mt-3 flex-shrink-0'></div>
+                <div className='hidden lg:block lg:min-w-20 border-amber-500 border-t-4 h-20 mt-3 flex-shrink-0'></div>
                 <div className='w-full lg:flex-1'>
                     <div className='space-y-4 sm:space-y-6'>
                         <p className='text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300'>

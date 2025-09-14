@@ -141,32 +141,30 @@ const SkillsSection = () => {
                 Skills & Tools
             </h1>
             <div className='flex flex-col lg:flex-row items-start justify-center lg:justify-start gap-4 lg:gap-6'>
-                <div className='hidden lg:block lg:min-w-20 dark:border-amber-500 border-t-4 h-20 mt-3 flex-shrink-0'></div>
+                <div className='hidden lg:block lg:min-w-20 border-amber-500 border-t-4 h-20 mt-3 flex-shrink-0'></div>
                 <div className='w-full lg:flex-1'>
-                    <div className='space-y-6 sm:space-y-8'>
-                        <p className='text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300 text-center lg:text-left'>
-                            The skills, tools, and technologies I use to bring
-                            ideas to life:
-                        </p>
-                        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 justify-items-center'>
-                            {skills.map((skill, index) => (
-                                <div
-                                    key={index}
-                                    className='flex group flex-col justify-center items-center hover:scale-110 transition-transform duration-200 p-2 sm:p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50'
-                                >
-                                    <div className='flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20'>
-                                        <div className='text-gray-600 dark:text-gray-300 group-hover:text-amber-500 dark:group-hover:text-amber-500 transition-colors duration-200'>
-                                            {skill.icon}
-                                        </div>
-                                    </div>
-                                    <p className='mt-2 text-xs sm:text-sm md:text-base font-medium text-gray-700 dark:text-gray-300 text-center'>
-                                        {skill.title}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <p className='text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300 text-center lg:text-left'>
+                        The skills, tools, and technologies I use to bring ideas
+                        to life:
+                    </p>
                 </div>
+            </div>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 justify-items-center'>
+                {skills.map((skill, index) => (
+                    <div
+                        key={index}
+                        className='flex group flex-col justify-center items-center hover:scale-110 transition-transform duration-200 p-2 sm:p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50'
+                    >
+                        <div className='flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20'>
+                            <div className='text-gray-600 dark:text-gray-300 group-hover:text-amber-500 dark:group-hover:text-amber-500 transition-colors duration-200'>
+                                {skill.icon}
+                            </div>
+                        </div>
+                        <p className='mt-2 text-xs sm:text-sm md:text-base font-medium text-gray-700 dark:text-gray-300 text-center'>
+                            {skill.title}
+                        </p>
+                    </div>
+                ))}
             </div>
         </div>
     );

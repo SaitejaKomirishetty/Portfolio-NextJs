@@ -4,7 +4,9 @@ import CustomCursor from '@/components/CustomCursor';
 import ProfessionalExperience from '@/components/Experience';
 import HeroSection from '@/components/HeroSection';
 import Navbar from '@/components/NavBar';
+import Projects from '@/components/Projects';
 import SkillsSection from '@/components/SkillsSection';
+import { FloatingDock } from '@/components/ui/floating-dock';
 import { IconBrandGithub, IconBrandInstagram } from '@tabler/icons-react';
 import { IconBrandLinkedin, IconBrandX } from '@tabler/icons-react';
 import { useEffect, useRef, useState } from 'react';
@@ -80,7 +82,7 @@ export default function Home() {
             </div>
             <div className=' p-4 md:p-6 lg:p-8 xl:p-10 2xl:p-12 mx-5 md:mx-10 lg:mx-20 space-y-5  md:space-y-10 lg:space-y-16 xl:space-y-20 2xl:space-y-32'>
                 <HeroSection />
-                <div className='w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5  md:space-y-10 lg:space-y-16 xl:space-y-20 2xl:space-y-32'>
+                <div className='w-full  mx-auto px-4 sm:px-6 lg:px-8 space-y-5  md:space-y-10 lg:space-y-16 xl:space-y-20 2xl:space-y-32'>
                     <section ref={aboutRef} id='about'>
                         <AboutSection />
                     </section>
@@ -88,8 +90,20 @@ export default function Home() {
                         <SkillsSection />
                     </section>
                     <section ref={experienceRef} id='experience'>
-                        <ProfessionalExperience  />
+                        <ProfessionalExperience />
                     </section>
+                    <section ref={projectsRef} id='projects'>
+                        <Projects />
+                    </section>
+                    <div className=''>
+                        <FloatingDock
+                            items={links}
+                            desktopClassName={
+                                'fixed bottom-5 left-1/2 transform -translate-x-1/2'
+                            }
+                            mobileClassName={'!fixed bottom-5 right-5'}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
