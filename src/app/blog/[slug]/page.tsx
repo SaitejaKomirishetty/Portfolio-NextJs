@@ -114,15 +114,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Post content */}
             <div
-                className='prose prose-lg max-w-none 
+                className='prose prose-lg max-w-none dark:prose-invert
                     prose-headings:text-gray-900 dark:prose-headings:text-white
                     prose-p:text-gray-700 dark:prose-p:text-gray-300
-                    prose-a:text-amber-600 dark:prose-a:text-amber-400
+                    prose-a:text-amber-600 hover:prose-a:underline dark:prose-a:text-amber-400
                     prose-strong:text-gray-900 dark:prose-strong:text-white
                     prose-code:text-gray-800 dark:prose-code:text-gray-200
                     prose-code:bg-gray-100 dark:prose-code:bg-gray-800
-                    prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800
-                    prose-pre:text-gray-100 dark:prose-pre:text-gray-200
+                    prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800
+                    prose-pre:text-gray-900 dark:prose-pre:text-gray-100
+                    prose-hr:border-gray-200 dark:prose-hr:border-gray-700
+                    prose-img:rounded-lg
+                    prose-table:border-collapse prose-th:border-b prose-td:border-b
+                    prose-th:border-gray-300 prose-td:border-gray-200 dark:prose-th:border-gray-700 dark:prose-td:border-gray-700
                     prose-blockquote:border-amber-500
                     prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400'
                 dangerouslySetInnerHTML={{ __html: post.content }}

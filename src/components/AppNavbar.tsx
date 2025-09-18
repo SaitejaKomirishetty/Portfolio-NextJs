@@ -1,18 +1,22 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Drawer from 'react-modern-drawer';
-import 'react-modern-drawer/dist/index.css';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { useTheme } from '@/hooks/ThemeContext';
 import SaitejaIcon from './SaitejaIcon';
-import { IconMenu2 } from '@tabler/icons-react';
+import { IconMenu2, IconX } from '@tabler/icons-react';
 
 const AppNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const { theme, toggleTheme } = useTheme();
     const pathname = usePathname();
+
+    // Prevent hydration mismatch by only rendering after mount
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState);
@@ -94,37 +98,64 @@ const AppNavbar = () => {
                         <IconMenu2 />
                     </button>
                 </div>
-                <Drawer
-                    open={isOpen}
-                    onClose={toggleDrawer}
-                    direction='right'
-                    className=''
-                    zIndex={50}
-                >
-                    <div className='dark:bg-[#34353a] h-full flex flex-col items-center justify-evenly'>
-                        {links.map((link, index) => (
-                            <div key={index} className='py-2 text-center'>
-                                {link.href.startsWith('#') ? (
-                                    <button
-                                        onClick={() =>
-                                            handleLinkClick(link.href)
-                                        }
-                                        className='hover:text-amber-500 transition-colors'
-                                    >
-                                        {link.title}
-                                    </button>
-                                ) : (
-                                    <Link
-                                        href={link.href}
-                                        className='hover:text-amber-500 transition-colors'
-                                    >
-                                        {link.title}
-                                    </Link>
-                                )}
+                {/* Custom Drawer */}
+                {isMounted && (
+                    <>
+                        {/* Overlay */}
+                        {isOpen && (
+                            <div
+                                className='fixed inset-0 bg-black bg-opacity-40 z-40'
+                                onClick={toggleDrawer}
+                            />
+                        )}
+
+                        {/* Drawer */}
+                        <div
+                            className={`fixed top-0 right-0 h-full w-64 bg-white dark:bg-[#34353a] z-50 transform transition-transform duration-300 ease-in-out ${
+                                isOpen ? 'translate-x-0' : 'translate-x-full'
+                            }`}
+                        >
+                            <div className='flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700'>
+                                <h2 className='text-lg font-semibold text-gray-900 dark:text-white'>
+                                    Menu
+                                </h2>
+                                <button
+                                    onClick={toggleDrawer}
+                                    className='p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors'
+                                >
+                                    <IconX className='w-5 h-5 text-gray-600 dark:text-gray-400' />
+                                </button>
                             </div>
-                        ))}
-                    </div>
-                </Drawer>
+
+                            <div className='flex flex-col items-center justify-evenly h-full py-8'>
+                                {links.map((link, index) => (
+                                    <div
+                                        key={index}
+                                        className='py-2 text-center'
+                                    >
+                                        {link.href.startsWith('#') ? (
+                                            <button
+                                                onClick={() =>
+                                                    handleLinkClick(link.href)
+                                                }
+                                                className='text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-lg'
+                                            >
+                                                {link.title}
+                                            </button>
+                                        ) : (
+                                            <Link
+                                                href={link.href}
+                                                className='text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-lg'
+                                            >
+                                                {link.title}
+                                            </Link>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
 
             {/* Desktop View */}

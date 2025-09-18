@@ -101,3 +101,98 @@ export async function getAllTags(): Promise<string[]> {
     const tags = allPosts.flatMap((post) => post.tags);
     return [...new Set(tags)];
 }
+
+// Search blog posts by query
+export async function searchBlogPosts(
+    query: string
+): Promise<BlogPostMetadata[]> {
+    if (!query.trim()) {
+        return getAllBlogPosts();
+    }
+
+    const allPosts = await getAllBlogPosts();
+    const searchTerm = query.toLowerCase().trim();
+
+    // Get all full posts for content search
+    const fullPosts = await Promise.all(
+        allPosts.map(async (post) => {
+            try {
+                const fullPost = await getBlogPost(post.slug);
+                return { metadata: post, content: fullPost?.content || '' };
+            } catch (error) {
+                console.error(`Error reading post ${post.slug}:`, error);
+                return { metadata: post, content: '' };
+            }
+        })
+    );
+
+    return fullPosts
+        .filter(({ metadata: post, content }) => {
+            // Search in title
+            const titleMatch = post.title.toLowerCase().includes(searchTerm);
+
+            // Search in excerpt
+            const excerptMatch = post.excerpt
+                .toLowerCase()
+                .includes(searchTerm);
+
+            // Search in tags
+            const tagsMatch = post.tags.some((tag) =>
+                tag.toLowerCase().includes(searchTerm)
+            );
+
+            // Search in content
+            const plainTextContent = content
+                .replace(/<[^>]*>/g, '')
+                .toLowerCase();
+            const contentMatch = plainTextContent.includes(searchTerm);
+
+            return titleMatch || excerptMatch || tagsMatch || contentMatch;
+        })
+        .map(({ metadata }) => metadata);
+}
+
+// Advanced search with filters
+export async function advancedSearchBlogPosts(options: {
+    query?: string;
+    tags?: string[];
+    featured?: boolean;
+    dateFrom?: string;
+    dateTo?: string;
+}): Promise<BlogPostMetadata[]> {
+    let posts = await getAllBlogPosts();
+
+    // Text search
+    if (options.query?.trim()) {
+        posts = await searchBlogPosts(options.query);
+    }
+
+    // Filter by tags
+    if (options.tags && options.tags.length > 0) {
+        posts = posts.filter((post) =>
+            options.tags!.some((tag) =>
+                post.tags.some((postTag) =>
+                    postTag.toLowerCase().includes(tag.toLowerCase())
+                )
+            )
+        );
+    }
+
+    // Filter by featured status
+    if (options.featured !== undefined) {
+        posts = posts.filter((post) => post.featured === options.featured);
+    }
+
+    // Filter by date range
+    if (options.dateFrom) {
+        const fromDate = new Date(options.dateFrom);
+        posts = posts.filter((post) => new Date(post.date) >= fromDate);
+    }
+
+    if (options.dateTo) {
+        const toDate = new Date(options.dateTo);
+        posts = posts.filter((post) => new Date(post.date) <= toDate);
+    }
+
+    return posts;
+}
