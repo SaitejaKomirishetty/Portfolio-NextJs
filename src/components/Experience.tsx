@@ -173,13 +173,16 @@ export default function ProfessionalExperience() {
                                     } flex-row`}
                                 >
                                     {/* Timeline Marker */}
-                                    <div className='absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-x-1/2 z-10'>
+                                    <div className='absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-x-1/2 '>
                                         <div
                                             className={`w-12 h-12 rounded-full dark:bg-amber-500 bg-gray-500  border-4 dark:border-amber-200 border-gray-200 shadow-lg flex items-center justify-center text-white transition-all duration-500 ${
                                                 isVisible
                                                     ? 'scale-110 shadow-amber-500/25'
                                                     : 'scale-100'
                                             }`}
+                                            style={{
+                                                zIndex: -100,
+                                            }}
                                         >
                                             {experience.icon}
                                         </div>

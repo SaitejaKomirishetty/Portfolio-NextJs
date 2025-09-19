@@ -1,5 +1,6 @@
 'use client';
 import AboutSection from '@/components/AboutSection';
+import Contact from '@/components/Contact';
 import ProfessionalExperience from '@/components/Experience';
 import HeroSection from '@/components/HeroSection';
 import Projects from '@/components/Projects';
@@ -56,6 +57,9 @@ export default function Home() {
                     </section>
                     <section id='projects'>
                         <Projects />
+                    </section>
+                    <section id='contact'>
+                        <Contact />
                     </section>
                     <div className=''>
                         <FloatingDock
