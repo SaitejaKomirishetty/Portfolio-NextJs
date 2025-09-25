@@ -1,7 +1,7 @@
 ---
 title: 'SVG'
-date: '2024-01-15'
-excerpt: 'This is a brief description of my blog post...'
+date: '2024-10-15'
+excerpt: 'All you need to get started with svg'
 tags: ['react', 'nextjs', 'web-dev']
 featured: true
 # image: '/blog/my-first-post/cover.jpg'

@@ -35,13 +35,28 @@ export async function generateMetadata({
         };
     }
 
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const pageUrl = new URL(`/blog/${slug}`, siteUrl).toString();
+    const imageUrl = new URL(post.image || '/Logo.svg', siteUrl).toString();
+
     return {
         title: `${post.title} | Saiteja Komirishetty`,
         description: post.excerpt,
+        alternates: { canonical: pageUrl },
         openGraph: {
+            type: 'article',
+            url: pageUrl,
             title: post.title,
             description: post.excerpt,
-            images: post.image ? [{ url: post.image }] : [],
+            publishedTime: post.date,
+            tags: post.tags,
+            images: [{ url: imageUrl }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
+            images: [imageUrl],
         },
     };
 }
