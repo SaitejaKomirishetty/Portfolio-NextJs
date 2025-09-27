@@ -21,55 +21,71 @@ interface Experience {
     company: string;
     duration: string;
     location?: string;
-    description: string;
+    description: string[];
     technologies: string[];
     icon: React.ReactNode;
 }
 
 const experiences: Experience[] = [
     {
-        id: 1,
-        jobTitle: 'Senior Full Stack Developer',
-        company: 'TechCorp Solutions',
-        duration: '2022 - Present',
-        location: 'San Francisco, CA',
-        description:
-            'Led development of scalable web applications serving 100k+ users. Architected microservices infrastructure and mentored junior developers.',
-        technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'PostgreSQL'],
+        id: 4,
+        jobTitle: 'Software Engineer',
+        company: 'Torry Harris Integration Solutions',
+        duration: '2025 Jan - Present',
+        location: 'Bengaluru, Karataka',
+        description: [
+            'Optimized web application performance by implementing browser caching, lazy loading, code splitting, and React Query, resulting in 30–40% faster page load times and improved user experience.',
+            'Led code review initiatives by establishing standardized best practices, improving code consistency and maintainability, and reducing production bugs by 25% through early detection.',
+            ' Managed a cross-functional team of 5 developers to deliver a React-based marketplace portal, coordinating task allocation, providing mentorship, and ensuring on-time delivery under Agile workflows',
+            'Mentored junior developers by promoting clean code practices, React design patterns, and conducting regular pair programming sessions, resulting in a 30% improvement in delivery speed and code quality',
+        ],
+        technologies: ['React', 'JavaScript', 'Tailwind', 'Node.js'],
         icon: <Rocket className='w-5 h-5' />,
     },
     {
-        id: 2,
-        jobTitle: 'Frontend Developer',
-        company: 'StartupXYZ',
-        duration: '2020 - 2022',
-        location: 'Remote',
-        description:
-            'Built responsive user interfaces and improved application performance by 40%. Collaborated with design team to implement pixel-perfect designs.',
-        technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Redux', 'Jest'],
+        id: 3,
+        jobTitle: 'Associate Software Engineer',
+        company: 'Torry Harris Integration Solutions',
+        duration: '2024 Feb - 2024 Dec',
+        location: 'Bengaluru, Karataka',
+        description: [
+            'Built responsive and performant UIs with React and CSS.',
+            'Evaluated and integrated optimal third-party React libraries and packages through extensive testing, which reduced development time by 15% and improved team productivity and code modularity.',
+            'Added multilingual support using i18n.',
+            'Integrated RESTful APIs to improve data flow and user experience.',
+            'Resolved performance bottlenecks and reduced bugs by 35%.',
+            'Refactored the codebase for scalability and reduced technical debt.',
+        ],
+        technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Redux'],
         icon: <Code className='w-5 h-5' />,
     },
     {
-        id: 3,
-        jobTitle: 'Web Developer',
-        company: 'Digital Agency Pro',
-        duration: '2019 - 2020',
-        location: 'New York, NY',
-        description:
-            'Developed custom websites for clients across various industries. Optimized site performance and implemented SEO best practices.',
-        technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'WordPress'],
-        icon: <Globe className='w-5 h-5' />,
+        id: 2,
+        jobTitle: 'Associate Software Engineer - Trainee',
+        company: 'Torry Harris Integration Solutions',
+        duration: '2023 Aug - 2024 Feb',
+        location: 'Bengaluru, Karataka',
+        description: [
+            'Contributed to building responsive and accessible UIs using React and CSS under senior developer guidance.',
+            'Assisted in integrating RESTful APIs and resolving front-end performance issues, improving application reliability.',
+            'Quickly ramped up on React, Redux, and Agile practices, supporting feature delivery in a collaborative team environment.',
+        ],
+        technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Redux'],
+        icon: <Database className='w-5 h-5' />,
     },
     {
-        id: 4,
-        jobTitle: 'Junior Developer',
-        company: 'CodeBootcamp Inc',
-        duration: '2018 - 2019',
-        location: 'Austin, TX',
-        description:
-            'Started career building internal tools and learning modern development practices. Participated in code reviews and agile development processes.',
-        technologies: ['JavaScript', 'Python', 'SQL', 'Git', 'Docker'],
-        icon: <Database className='w-5 h-5' />,
+        id: 1,
+        jobTitle: 'Intern',
+        company: 'LTIMindtree',
+        duration: '2023 Feb - 2023 May',
+        location: 'Remote',
+        description: [
+            'Developed backend-focused Java and C++ apps to demonstrate core concepts in system-level programming.',
+            'Deployed and managed cloud apps on AWS using EC2 and S3, gaining real-world experience in cloud deployment.',
+            'Automated infrastructure provisioning using Terraform, applying Infrastructure as Code (IaC) practices.',
+        ],
+        technologies: ['AWS', 'Terraform', 'JAVA', 'C++'],
+        icon: <Globe className='w-5 h-5' />,
     },
 ];
 
@@ -152,9 +168,9 @@ export default function ProfessionalExperience() {
                     </div>
 
                     {/* Mobile Timeline Line */}
-                    <div className='md:hidden absolute left-8 w-1 bg-gray-300 dark:bg-gray-600 h-full'>
+                    {/* <div className='md:hidden absolute left-8 w-1 bg-gray-300 dark:bg-gray-600 h-full'>
                         <div className='absolute top-0 w-1 h-full bg-gradient-to-b from-gray-700 to-gray-200 dark:from-amber-500  dark:to-amber-200 opacity-60'></div>
-                    </div>
+                    </div> */}
 
                     {/* Experience Items */}
                     <div className='space-y-12 md:space-y-16'>
@@ -173,7 +189,7 @@ export default function ProfessionalExperience() {
                                     } flex-row`}
                                 >
                                     {/* Timeline Marker */}
-                                    <div className='absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-x-1/2 '>
+                                    <div className='hidden md:block absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-x-1/2 '>
                                         <div
                                             className={`w-12 h-12 rounded-full dark:bg-amber-500 bg-gray-500  border-4 dark:border-amber-200 border-gray-200 shadow-lg flex items-center justify-center text-white transition-all duration-500 ${
                                                 isVisible
@@ -190,7 +206,7 @@ export default function ProfessionalExperience() {
 
                                     {/* Experience Card */}
                                     <div
-                                        className={`w-full md:w-[48%] ml-20 md:ml-0 ${
+                                        className={`w-full md:w-[48%] md:ml-0 ${
                                             isLeft
                                                 ? 'md:mr-auto md:pr-8'
                                                 : 'md:ml-auto md:pl-8'
@@ -238,9 +254,23 @@ export default function ProfessionalExperience() {
                                                 </div>
 
                                                 {/* Description */}
-                                                <p className='text-gray-600 dark:text-gray-400 mb-4 dark:group-hover:text-white leading-relaxed text-pretty group-hover:text-gray-700  transition-colors duration-300'>
-                                                    {experience.description}
-                                                </p>
+                                                <ul className='text-gray-600 dark:text-gray-400 mb-4 dark:group-hover:text-white leading-relaxed text-pretty group-hover:text-gray-700 transition-colors duration-300 space-y-1'>
+                                                    {experience.description.map(
+                                                        (item, index) => (
+                                                            <li
+                                                                key={index}
+                                                                className='flex items-start'
+                                                            >
+                                                                <span className='text-amber-500 mr-2 mt-1'>
+                                                                    •
+                                                                </span>
+                                                                <span>
+                                                                    {item}
+                                                                </span>
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </ul>
 
                                                 {/* Technologies */}
                                                 <div className='flex flex-wrap gap-2'>
