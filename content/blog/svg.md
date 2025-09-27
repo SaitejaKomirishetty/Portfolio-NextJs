@@ -1,10 +1,10 @@
 ---
 title: 'SVG'
 date: '2024-10-15'
-excerpt: 'All you need to get started with svg'
-tags: ['react', 'nextjs', 'web-dev']
+excerpt: 'Learn everything you need to know to get started with SVGs (Scalable Vector Graphics). This beginner-friendly guide covers what SVGs are, why they’re so powerful, and how to use them in your web projects. From basic shapes and paths to styling, animations, gradients, and interactivity with CSS and JavaScript — this post walks you through practical examples and best practices to help you create crisp, scalable, and engaging graphics for modern websites.'
+tags: ['web-dev', 'svg']
 featured: true
-# image: '/blog/my-first-post/cover.jpg'
+image: '/blog-media/svg_banner.png'
 ---
 
 # Getting Started with SVGs: A Beginner's Guide
@@ -20,8 +20,9 @@ If you've ever wondered how developers create those sleek icons, illustrations, 
 At its heart, an SVG is like a recipe for drawing. Instead of storing every single pixel of color (like a photograph would), SVGs store mathematical instructions that tell the browser exactly how to draw shapes, lines, and curves.
 
 Think of it this way: imagine you want to share a cake with a friend. You could either:
-- **Option A:** Take a photo of your finished cake (this is like a JPEG or PNG – a raster image)
-- **Option B:** Share the recipe so they can bake their own perfect cake (this is like an SVG – a vector image)
+
+-   **Option A:** Take a photo of your finished cake (this is like a JPEG or PNG – a raster image)
+-   **Option B:** Share the recipe so they can bake their own perfect cake (this is like an SVG – a vector image)
 
 With Option A, if your friend tries to blow up that photo to poster size, it'll look pixelated and blurry. But with Option B, they can bake a perfect cake at any size – whether it's a cupcake or a wedding cake – because they have the instructions, not just a fixed image.
 
@@ -50,17 +51,16 @@ The simplest way to add an SVG to your webpage is by embedding it directly in yo
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>My First SVG</title>
-</head>
-<body>
-    <h1>Welcome to SVGs!</h1>
-    
-    <svg width="200" height="200">
-        <circle cx="100" cy="100" r="80" fill="lightblue" />
-    </svg>
-    
-</body>
+    <head>
+        <title>My First SVG</title>
+    </head>
+    <body>
+        <h1>Welcome to SVGs!</h1>
+
+        <svg width="200" height="200">
+            <circle cx="100" cy="100" r="80" fill="lightblue" />
+        </svg>
+    </body>
 </html>
 ```
 
@@ -80,9 +80,9 @@ Rectangles are perfect for creating boxes, bars, and geometric designs:
 </svg>
 ```
 
-- `x` and `y` set the position of the top-left corner
-- `width` and `height` determine the size
-- `fill` sets the color inside the shape
+-   `x` and `y` set the position of the top-left corner
+-   `width` and `height` determine the size
+-   `fill` sets the color inside the shape
 
 ### Circle (`<circle>`)
 
@@ -90,14 +90,21 @@ Circles are great for buttons, icons, and decorative elements:
 
 ```html
 <svg width="200" height="200">
-    <circle cx="100" cy="100" r="70" fill="lightgreen" stroke="darkgreen" stroke-width="3" />
+    <circle
+        cx="100"
+        cy="100"
+        r="70"
+        fill="lightgreen"
+        stroke="darkgreen"
+        stroke-width="3"
+    />
 </svg>
 ```
 
-- `cx` and `cy` set the center point coordinates
-- `r` defines the radius
-- `stroke` adds a border color
-- `stroke-width` controls the border thickness
+-   `cx` and `cy` set the center point coordinates
+-   `r` defines the radius
+-   `stroke` adds a border color
+-   `stroke-width` controls the border thickness
 
 ### Line (`<line>`)
 
@@ -109,17 +116,32 @@ Lines are useful for dividers, arrows, and connecting elements:
 </svg>
 ```
 
-- `x1, y1` set the starting point
-- `x2, y2` set the ending point
-- Lines need a `stroke` color to be visible (they have no fill)
+-   `x1, y1` set the starting point
+-   `x2, y2` set the ending point
+-   Lines need a `stroke` color to be visible (they have no fill)
 
 You can combine these shapes to create more interesting graphics:
 
 ```html
 <svg width="300" height="200">
-    <rect x="50" y="50" width="200" height="100" fill="lightcoral" stroke="darkred" stroke-width="2" />
+    <rect
+        x="50"
+        y="50"
+        width="200"
+        height="100"
+        fill="lightcoral"
+        stroke="darkred"
+        stroke-width="2"
+    />
     <circle cx="150" cy="100" r="30" fill="white" />
-    <line x1="120" y1="100" x2="180" y2="100" stroke="darkred" stroke-width="3" />
+    <line
+        x1="120"
+        y1="100"
+        x2="180"
+        y2="100"
+        stroke="darkred"
+        stroke-width="3"
+    />
 </svg>
 ```
 
@@ -138,9 +160,10 @@ The `viewBox` takes four values: `viewBox="min-x min-y width height"`
 ```
 
 In this example:
-- The SVG display area is 400×300 pixels
-- The `viewBox` shows coordinates from (0,0) to (200,150)
-- The circle appears twice as large because we're "zooming in" on a 200×150 coordinate system and displaying it in a 400×300 space
+
+-   The SVG display area is 400×300 pixels
+-   The `viewBox` shows coordinates from (0,0) to (200,150)
+-   The circle appears twice as large because we're "zooming in" on a 200×150 coordinate system and displaying it in a 400×300 space
 
 This is what makes SVGs truly scalable – you can change the `width` and `height` attributes without changing the `viewBox`, and your graphic will scale proportionally:
 
@@ -164,14 +187,14 @@ SVGs can be styled using attributes directly on the elements, or with CSS. Here 
 
 ```html
 <svg width="200" height="200">
-    <circle 
-        cx="100" 
-        cy="100" 
-        r="80" 
-        fill="lightblue" 
-        stroke="navy" 
-        stroke-width="5" 
-        opacity="0.8" 
+    <circle
+        cx="100"
+        cy="100"
+        r="80"
+        fill="lightblue"
+        stroke="navy"
+        stroke-width="5"
+        opacity="0.8"
     />
 </svg>
 ```
@@ -188,7 +211,7 @@ You can also style SVGs with CSS, which gives you more flexibility:
         stroke-width: 5px;
         opacity: 0.8;
     }
-    
+
     .my-circle:hover {
         fill: darkblue;
         transition: fill 0.3s ease;
@@ -201,11 +224,12 @@ You can also style SVGs with CSS, which gives you more flexibility:
 ```
 
 Common SVG styling properties include:
-- `fill`: The color inside shapes
-- `stroke`: The border/outline color
-- `stroke-width`: The thickness of the border
-- `opacity`: Transparency (0 = invisible, 1 = fully opaque)
-- `stroke-dasharray`: Creates dashed lines
+
+-   `fill`: The color inside shapes
+-   `stroke`: The border/outline color
+-   `stroke-width`: The thickness of the border
+-   `opacity`: Transparency (0 = invisible, 1 = fully opaque)
+-   `stroke-dasharray`: Creates dashed lines
 
 ## Creating Complex Shapes with Paths
 
@@ -216,22 +240,30 @@ Paths use a mini-language of commands to draw lines and curves:
 ```html
 <svg width="200" height="200" viewBox="0 0 200 200">
     <!-- A simple triangle -->
-    <path d="M 100 20 L 180 160 L 20 160 Z" fill="orange" stroke="darkorange" stroke-width="3" />
+    <path
+        d="M 100 20 L 180 160 L 20 160 Z"
+        fill="orange"
+        stroke="darkorange"
+        stroke-width="3"
+    />
 </svg>
 ```
 
 The `d` attribute contains the drawing commands:
-- `M 100 20` = Move to point (100, 20)
-- `L 180 160` = Draw a Line to (180, 160)
-- `L 20 160` = Draw another Line to (20, 160)
-- `Z` = Close the path (connects back to the starting point)
+
+-   `M 100 20` = Move to point (100, 20)
+-   `L 180 160` = Draw a Line to (180, 160)
+-   `L 20 160` = Draw another Line to (20, 160)
+-   `Z` = Close the path (connects back to the starting point)
 
 Here's a fun heart shape:
 
 ```html
 <svg width="200" height="200" viewBox="0 0 200 200">
-    <path d="M 100 150 C 100 150, 80 120, 80 100 C 80 80, 100 80, 100 100 C 100 80, 120 80, 120 100 C 120 120, 100 150, 100 150 Z" 
-          fill="red" />
+    <path
+        d="M 100 150 C 100 150, 80 120, 80 100 C 80 80, 100 80, 100 100 C 100 80, 120 80, 120 100 C 120 120, 100 150, 100 150 Z"
+        fill="red"
+    />
 </svg>
 ```
 
@@ -243,7 +275,14 @@ SVGs can include text that's crisp at any size and fully searchable:
 
 ```html
 <svg width="300" height="100" viewBox="0 0 300 100">
-    <text x="150" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="darkblue">
+    <text
+        x="150"
+        y="50"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="24"
+        fill="darkblue"
+    >
         Hello, SVG World!
     </text>
 </svg>
@@ -256,9 +295,14 @@ You can even make text follow a path:
     <defs>
         <path id="curve" d="M 50 100 Q 150 50 250 100" />
     </defs>
-    
-    <path d="M 50 100 Q 150 50 250 100" fill="none" stroke="lightgray" stroke-width="2" />
-    
+
+    <path
+        d="M 50 100 Q 150 50 250 100"
+        fill="none"
+        stroke="lightgray"
+        stroke-width="2"
+    />
+
     <text font-family="Arial" font-size="16" fill="navy">
         <textPath href="#curve">This text follows a curved path!</textPath>
     </text>
@@ -298,29 +342,48 @@ You can animate SVG properties just like any other CSS properties:
         animation: spin 2s linear infinite;
         transform-origin: center;
     }
-    
+
     @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
-    
+
     .pulsing-heart {
         animation: pulse 1.5s ease-in-out infinite alternate;
     }
-    
+
     @keyframes pulse {
-        from { transform: scale(1); }
-        to { transform: scale(1.2); }
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.2);
+        }
     }
 </style>
 
 <svg width="400" height="200" viewBox="0 0 400 200">
     <!-- Spinning circle -->
-    <circle cx="100" cy="100" r="40" fill="lightblue" stroke="navy" stroke-width="3" class="spinning-circle" />
-    
+    <circle
+        cx="100"
+        cy="100"
+        r="40"
+        fill="lightblue"
+        stroke="navy"
+        stroke-width="3"
+        class="spinning-circle"
+    />
+
     <!-- Pulsing heart -->
-    <path d="M 300 150 C 300 150, 280 120, 280 100 C 280 80, 300 80, 300 100 C 300 80, 320 80, 320 100 C 320 120, 300 150, 300 150 Z" 
-          fill="red" class="pulsing-heart" />
+    <path
+        d="M 300 150 C 300 150, 280 120, 280 100 C 280 80, 300 80, 300 100 C 300 80, 320 80, 320 100 C 320 120, 300 150, 300 150 Z"
+        fill="red"
+        class="pulsing-heart"
+    />
 </svg>
 ```
 
@@ -335,7 +398,7 @@ Create interactive elements that respond to user actions:
         transition: all 0.3s ease;
         cursor: pointer;
     }
-    
+
     .interactive-rect:hover {
         fill: darkred;
         transform: scale(1.1);
@@ -355,9 +418,19 @@ SVG also has built-in animation elements for more complex animations:
 <svg width="300" height="200" viewBox="0 0 300 200">
     <circle cx="50" cy="100" r="20" fill="orange">
         <!-- Move the circle across the screen -->
-        <animate attributeName="cx" values="50;250;50" dur="3s" repeatCount="indefinite" />
+        <animate
+            attributeName="cx"
+            values="50;250;50"
+            dur="3s"
+            repeatCount="indefinite"
+        />
         <!-- Change colors while moving -->
-        <animate attributeName="fill" values="orange;red;purple;orange" dur="3s" repeatCount="indefinite" />
+        <animate
+            attributeName="fill"
+            values="orange;red;purple;orange"
+            dur="3s"
+            repeatCount="indefinite"
+        />
     </circle>
 </svg>
 ```
@@ -377,7 +450,7 @@ Make your SVGs even more beautiful with gradients and patterns:
             <stop offset="100%" style="stop-color:purple" />
         </linearGradient>
     </defs>
-    
+
     <rect x="50" y="50" width="200" height="100" fill="url(#sunsetGradient)" />
 </svg>
 ```
@@ -392,7 +465,7 @@ Make your SVGs even more beautiful with gradients and patterns:
             <stop offset="100%" style="stop-color:blue" />
         </radialGradient>
     </defs>
-    
+
     <circle cx="100" cy="100" r="80" fill="url(#ballGradient)" />
 </svg>
 ```
@@ -403,18 +476,27 @@ You can make SVGs fully interactive using JavaScript:
 
 ```html
 <script>
-function changeColor() {
-    const circle = document.getElementById('clickableCircle');
-    const colors = ['red', 'blue', 'green', 'orange', 'purple'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    circle.setAttribute('fill', randomColor);
-}
+    function changeColor() {
+        const circle = document.getElementById('clickableCircle');
+        const colors = ['red', 'blue', 'green', 'orange', 'purple'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        circle.setAttribute('fill', randomColor);
+    }
 </script>
 
 <svg width="200" height="200" viewBox="0 0 200 200">
-    <circle id="clickableCircle" cx="100" cy="100" r="60" fill="lightblue" 
-            style="cursor: pointer;" onclick="changeColor()" />
-    <text x="100" y="180" text-anchor="middle" font-size="12">Click the circle!</text>
+    <circle
+        id="clickableCircle"
+        cx="100"
+        cy="100"
+        r="60"
+        fill="lightblue"
+        style="cursor: pointer;"
+        onclick="changeColor()"
+    />
+    <text x="100" y="180" text-anchor="middle" font-size="12">
+        Click the circle!
+    </text>
 </svg>
 ```
 
@@ -444,13 +526,14 @@ Ready for more advanced techniques? Here are some areas to explore:
 Congratulations! You've just explored the incredible world of SVGs, from basic shapes to animations and beyond. You now understand that SVGs are like recipes for drawing – they're scalable, lightweight, customizable, and incredibly powerful for creating everything from simple icons to complex interactive graphics.
 
 Here's what you've learned:
-- SVGs are vector-based graphics that scale without losing quality
-- Basic shapes are your building blocks, but paths let you create anything
-- Text in SVGs is crisp, scalable, and accessible
-- Groups help organize complex graphics
-- Animations and interactions bring your graphics to life
-- Gradients and patterns add visual richness
-- JavaScript integration enables full interactivity
+
+-   SVGs are vector-based graphics that scale without losing quality
+-   Basic shapes are your building blocks, but paths let you create anything
+-   Text in SVGs is crisp, scalable, and accessible
+-   Groups help organize complex graphics
+-   Animations and interactions bring your graphics to life
+-   Gradients and patterns add visual richness
+-   JavaScript integration enables full interactivity
 
 The best way to master SVGs is by experimenting! Try creating your own animated icon, build a simple data visualization, or design an interactive button. Start small, play around with different techniques, and don't be afraid to break things (that's how we learn!).
 

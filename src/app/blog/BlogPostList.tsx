@@ -32,7 +32,7 @@ export default function BlogPostList({ posts }: BlogPostListProps) {
                                 src={post.image}
                                 alt={post.title}
                                 fill
-                                className='object-cover'
+                                className='aspect-video'
                             />
                         </div>
                     )}

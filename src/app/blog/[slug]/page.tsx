@@ -87,7 +87,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         src={post.image}
                         alt={post.title}
                         fill
-                        className='object-cover'
+                        className=' aspect-video'
                     />
                 </div>
             )}
