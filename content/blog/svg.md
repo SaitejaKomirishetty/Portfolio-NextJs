@@ -504,22 +504,22 @@ You can make SVGs fully interactive using JavaScript:
 
 As you dive deeper into SVGs, keep these tips in mind:
 
-**• Keep it simple**: Start with basic shapes and gradually add complexity
-**• Optimize your paths**: Remove unnecessary points and commands
-**• Use CSS classes**: Instead of inline styles for better maintainability  
-**• Group related elements**: Use `<g>` tags to organize your code
-**• Mind the viewBox**: Always set appropriate viewBox values for scaling
-**• Compress when needed**: Tools like SVGO can optimize your SVG files
+-   **Keep it simple**: Start with basic shapes and gradually add complexity
+-   **Optimize your paths**: Remove unnecessary points and commands
+-   **Use CSS classes**: Instead of inline styles for better maintainability
+-   **Group related elements**: Use `<g>` tags to organize your code
+-   **Mind the viewBox**: Always set appropriate viewBox values for scaling
+-   **Compress when needed**: Tools like SVGO can optimize your SVG files
 
 ## Taking SVGs Further
 
 Ready for more advanced techniques? Here are some areas to explore:
 
-**• SVG Filters**: Create effects like shadows, blurs, and lighting
-**• Clipping and Masking**: Hide or reveal parts of your graphics
-**• SVG Icons Systems**: Create reusable icon libraries
-**• Data Visualizations**: Use libraries like D3.js with SVG
-**• SVG Sprites**: Combine multiple icons into one file for better performance
+-  **SVG Filters**: Create effects like shadows, blurs, and lighting
+-  **Clipping and Masking**: Hide or reveal parts of your graphics
+-  **SVG Icons Systems**: Create reusable icon libraries
+-  **Data Visualizations**: Use libraries like D3.js with SVG
+-  **SVG Sprites**: Combine multiple icons into one file for better performance
 
 ## Conclusion
 
