@@ -1,13 +1,11 @@
 ---
-title: 'SVG'
+title: "Getting Started with SVGs: A Beginner's Guide"
 date: '2024-10-15'
 excerpt: 'Learn everything you need to know to get started with SVGs (Scalable Vector Graphics). This beginner-friendly guide covers what SVGs are, why they’re so powerful, and how to use them in your web projects. From basic shapes and paths to styling, animations, gradients, and interactivity with CSS and JavaScript — this post walks you through practical examples and best practices to help you create crisp, scalable, and engaging graphics for modern websites.'
 tags: ['web-dev', 'svg']
 featured: true
 image: '/blog-media/svg_banner.png'
 ---
-
-# Getting Started with SVGs: A Beginner's Guide
 
 ## Introduction
 
