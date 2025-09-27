@@ -515,11 +515,11 @@ As you dive deeper into SVGs, keep these tips in mind:
 
 Ready for more advanced techniques? Here are some areas to explore:
 
--  **SVG Filters**: Create effects like shadows, blurs, and lighting
--  **Clipping and Masking**: Hide or reveal parts of your graphics
--  **SVG Icons Systems**: Create reusable icon libraries
--  **Data Visualizations**: Use libraries like D3.js with SVG
--  **SVG Sprites**: Combine multiple icons into one file for better performance
+-   **SVG Filters**: Create effects like shadows, blurs, and lighting
+-   **Clipping and Masking**: Hide or reveal parts of your graphics
+-   **SVG Icons Systems**: Create reusable icon libraries
+-   **Data Visualizations**: Use libraries like D3.js with SVG
+-   **SVG Sprites**: Combine multiple icons into one file for better performance
 
 ## Conclusion
 
