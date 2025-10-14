@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     },
     metadataBase: process.env.NEXT_PUBLIC_SITE_URL
         ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-        : undefined,
+        : new URL('https://saitejakomirishetty.com'),
     openGraph: {
         title: 'Saiteja Komirishetty',
         description: 'Portfolio',

@@ -35,9 +35,14 @@ export async function generateMetadata({
         };
     }
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    // Use environment variable or fallback to localhost for development
+    const siteUrl =
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://saitejakomirishetty.com';
     const pageUrl = new URL(`/blog/${slug}`, siteUrl).toString();
-    const imageUrl = new URL(post.image || '/Logo.svg', siteUrl).toString();
+
+    // Construct image URL with proper fallback
+    const imagePath = post.image || '/Logo.svg';
+    const imageUrl = new URL(imagePath, siteUrl).toString();
 
     return {
         title: `${post.title} | Saiteja Komirishetty`,
@@ -50,7 +55,14 @@ export async function generateMetadata({
             description: post.excerpt,
             publishedTime: post.date,
             tags: post.tags,
-            images: [{ url: imageUrl }],
+            images: [
+                {
+                    url: imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                },
+            ],
         },
         twitter: {
             card: 'summary_large_image',
