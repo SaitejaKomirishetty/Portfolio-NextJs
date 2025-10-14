@@ -75,12 +75,12 @@ export default function BlogPostList({ posts }: BlogPostListProps) {
                         <div className='flex items-center justify-between'>
                             <div className='flex flex-wrap gap-2'>
                                 {post.tags.map((tag) => (
-                                    <span
+                                    <p
                                         key={tag}
-                                        className='text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-1 rounded-full'
+                                        className='text-xs flex items-baseline-last justify-center bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-1 rounded-full'
                                     >
-                                        #{tag}
-                                    </span>
+                                        #<span>{tag}</span>
+                                    </p>
                                 ))}
                             </div>
 
