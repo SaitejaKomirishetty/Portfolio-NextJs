@@ -27,7 +27,7 @@ export default function BlogPostList({ posts }: BlogPostListProps) {
                     className='border border-gray-200 rounded-lg dark:border-gray-800 transition-all duration-500 ease-out transform-gpu hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/15 dark:hover:border-amber-500 hover:border-amber-500/30'
                 >
                     {post.image && (
-                        <div className='aspect-video relative'>
+                        <div className='aspect-video relative overflow-hidden rounded-t-lg'>
                             <Image
                                 src={post.image}
                                 alt={post.title}
