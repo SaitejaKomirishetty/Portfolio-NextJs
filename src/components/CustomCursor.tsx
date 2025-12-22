@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const CustomCursor = () => {
     const [isDesktop, setIsDesktop] = useState(false);
@@ -7,30 +7,32 @@ const CustomCursor = () => {
     const innerRef = useRef<HTMLDivElement | null>(null);
 
     // Variables to store the mouse position
-    let mouseX = 0;
-    let mouseY = 0;
+    const mouseX = useRef(0);
+    const mouseY = useRef(0);
 
     // Variables to store the smoothed cursor position
-    let cursorX = 0;
-    let cursorY = 0;
+    const cursorX = useRef(0);
+    const cursorY = useRef(0);
 
-    const handleMouseMove = (e: MouseEvent) => {
-        mouseX = e.pageX;
-        mouseY = e.pageY;
-    };
+    const requestRef = useRef<number | null>(null);
+
+    const handleMouseMove = useCallback((e: MouseEvent) => {
+        mouseX.current = e.pageX;
+        mouseY.current = e.pageY;
+    }, []);
 
     // Optimize animation loop
-    const animateCursor = () => {
-        cursorX += (mouseX - cursorX) * 0.025;
-        cursorY += (mouseY - cursorY) * 0.025;
+    const animateCursor = useCallback(() => {
+        cursorX.current += (mouseX.current - cursorX.current) * 0.025;
+        cursorY.current += (mouseY.current - cursorY.current) * 0.025;
 
         if (cursorRef.current) {
-            cursorRef.current.style.left = `${cursorX}px`;
-            cursorRef.current.style.top = `${cursorY}px`;
+            cursorRef.current.style.left = `${cursorX.current}px`;
+            cursorRef.current.style.top = `${cursorY.current}px`;
         }
 
-        requestAnimationFrame(animateCursor);
-    };
+        requestRef.current = requestAnimationFrame(animateCursor);
+    }, []);
 
     const handleMouseOver = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
@@ -117,6 +119,9 @@ const CustomCursor = () => {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseover', handleMouseOver);
             document.removeEventListener('mouseout', handleMouseOut);
+            if (requestRef.current) {
+                cancelAnimationFrame(requestRef.current);
+            }
         };
     }, [animateCursor, handleMouseMove]);
 
