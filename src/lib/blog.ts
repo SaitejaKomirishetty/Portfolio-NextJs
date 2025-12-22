@@ -74,6 +74,7 @@ export async function getAllBlogPosts(): Promise<BlogPostMetadata[]> {
 
     return posts
         .filter((post): post is BlogPostMetadata => post !== null)
+        .filter((post) => new Date(post.date) <= new Date())
         .sort(
             (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
         );
