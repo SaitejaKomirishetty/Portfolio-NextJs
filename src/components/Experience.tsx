@@ -228,9 +228,9 @@ export default function ProfessionalExperience() {
                                             <CardContent className='relative p-6'>
                                                 {/* Job Title & Company */}
                                                 <div className='mb-4'>
-                                                    <h3 className='text-xl font-bold text-gray-800 dark:text-gray-200 mb-1 group-hover:text-amber-500 dark:group-hover:text-amber-500 transition-colors duration-300'>
+                                                    <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200 mb-1 group-hover:text-amber-500 dark:group-hover:text-amber-500 transition-colors duration-300'>
                                                         {experience.jobTitle}
-                                                    </h3>
+                                                    </h2>
                                                     <div className='flex items-center gap-2 text-gray-700 dark:text-gray-300 dark:group-hover:text-amber-400/90 font-semibold mb-2 group-hover:text-amber-500/80 transition-colors duration-300'>
                                                         <Briefcase className='w-4 h-4' />
                                                         {experience.company}

@@ -61,7 +61,7 @@ export default function RootLayout({
                 <ThemeProvider>
                     <ConditionalCursor />
                     <AppNavbar />
-                    {children}
+                    <main id='main-content'>{children}</main>
                 </ThemeProvider>
             </body>
         </html>

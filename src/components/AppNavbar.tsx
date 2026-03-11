@@ -78,8 +78,11 @@ const AppNavbar = () => {
         >
             {/* Mobile View */}
             <div className='md:hidden grid grid-cols-2 grid-rows-1 p-2'>
-                <Link href='/'>
-                    <SaitejaIcon />
+                <Link href='/' aria-label='Go to homepage'>
+                    <span>
+                        <SaitejaIcon />
+                        Saiteja Komirishetty
+                    </span>
                 </Link>
                 <div className='flex items-center justify-end gap-2'>
                     <div
@@ -160,7 +163,8 @@ const AppNavbar = () => {
 
             {/* Desktop View */}
             <div className='hidden md:flex items-center justify-between px-5 md:px-10 lg:px-20 py-3'>
-                <Link href='/'>
+                <Link href='/' aria-label='Go to homepage'>
+                    <span className='sr-only'>Saiteja Komirishetty</span>
                     <SaitejaIcon />
                 </Link>
                 <div className='flex items-center justify-end w-full gap-10 cursor-pointer'>

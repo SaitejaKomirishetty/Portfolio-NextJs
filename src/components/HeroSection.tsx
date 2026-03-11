@@ -41,7 +41,9 @@ const HeroSection = () => {
                         src={'/DSC_9370-removebg 1.png'}
                         alt='Saiteja - Frontend Developer'
                         className='object-contain w-full h-full'
-                        priority
+                        loading='eager'
+                        fetchPriority='high'
+                        priority={true}
                     />
                 </div>
             </div>
